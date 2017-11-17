@@ -1,3 +1,3 @@
 # Flex
 
-Test Test
+A "simple" plate deformation project.
