@@ -6,7 +6,7 @@ function [ deformation ] = rect_plate_point_deform( width, length, height, load,
     n = 1:inf;
 
     D = (modulus * height ^ 3) / (12 * (1-v)^2);
-    deformation = @(x,y) (4*load)/(pi^2*width*length*D);
+    deformation = @(x,y) (4*load)/(pi^2*width*length*D); % some random text
 
 end
 
