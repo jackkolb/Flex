@@ -10,7 +10,13 @@ y0 = 15;
 poiss = .3;
 modu = 30000000;
 
+subplot(2, 1, 1);
 deform = rect_plate_point_deform(width, length, wres, lres, height, load, x0, y0, poiss, modu);
 [X, Y] = meshgrid(linspace(0, width, wres), linspace(0, length, lres));
-
 surf(X, Y, deform);
+
+subplot(2, 1, 2);
+deform = rect_plate_surface_deform(width, length, wres, lres, height, load, poiss, modu);
+[X, Y] = meshgrid(linspace(0, width, wres), linspace(0, length, lres));
+surf(X, Y, deform);
+

@@ -23,16 +23,13 @@ function [ deformation ] = rect_plate_surface_deform( width, length, wres, lres,
             sum_deform = 0;
             for mm = m
                for nn = n
-                   sum_deform = sum_deform + sin(mm*pi*x/width)*sin(nn*pi*y/length) / (mm*nn*(mm^2/width^2+nn^2/length^2)^2);
+                   sum_deform = sum_deform + sin(mm*pi*xx/width)*sin(nn*pi*yy/length) / (mm*nn*(mm^2/width^2+nn^2/length^2)^2);
                end
             end
             
             deformation(y_count, x_count) = base_deform * sum_deform;
         end    
     end
-    
-%    deformation = (4*load)/(pi^2*width*length*D) * sum( sum( sin(m*pi*x0/width)*sin(n*pi*y0/length) / (m^2/width^2+n^2/length^2) * sin(m*pi*x/width)*sin(n*pi*y/length), n), m); % some random text
-
 
 end
 
