@@ -31,7 +31,6 @@ function [ deformation ] = rect_plate_point_deform( width, length, wres, lres, h
         end    
     end
     
-    disp(deformation);
 %    deformation = (4*load)/(pi^2*width*length*D) * sum( sum( sin(m*pi*x0/width)*sin(n*pi*y0/length) / (m^2/width^2+n^2/length^2) * sin(m*pi*x/width)*sin(n*pi*y/length), n), m); % some random text
 
 end
