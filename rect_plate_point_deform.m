@@ -23,7 +23,7 @@ function [ deformation ] = rect_plate_point_deform( width, length, wres, lres, h
             sum_deform = 0;
             for mm = m
                for nn = n
-                   sum_deform = sum_deform + sin(mm*pi*x0/width)*sin(nn*pi*y0/length) / (mm^2/width^2+nn^2/length^2) * sin(mm*pi*xx/width)*sin(nn*pi*yy/length);
+                   sum_deform = sum_deform + sin(mm*pi*x0/width)*sin(nn*pi*y0/length) / (mm^2/width^2+nn^2/length^2)^2 * sin(mm*pi*xx/width)*sin(nn*pi*yy/length);
                end
             end
             

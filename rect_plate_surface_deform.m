@@ -1,4 +1,4 @@
-function [ deformation ] = rect_plate_surface_deform( width, length, wres, lres, height, load, poisson, modulus )
+function [ deformation ] = rect_plate_surface_deform( width, length, wres, lres, height, load, poiss, modu )
 % calculates the deformation of a rectangular plate (load over surface)
 %   Detailed explanation goes here
 
@@ -8,7 +8,7 @@ function [ deformation ] = rect_plate_surface_deform( width, length, wres, lres,
     deformation = zeros([lres wres]);
     
     D = (modu*height^3) / (12 * (1-poiss^2));
-    base_deform = (4*load)/(pi^4*width*length*D);
+    base_deform = (16*load)/(pi^6*D);
     
     m = 1:10;
     n = 1:10;
@@ -23,7 +23,7 @@ function [ deformation ] = rect_plate_surface_deform( width, length, wres, lres,
             sum_deform = 0;
             for mm = m
                for nn = n
-                   sum_deform = sum_deform + sin(mm*pi*x0/width)*sin(nn*pi*y0/length) / (mm^2/width^2+nn^2/length^2) * sin(mm*pi*xx/width)*sin(nn*pi*yy/length);
+                   sum_deform = sum_deform + sin(mm*pi*x/width)*sin(nn*pi*y/length) / (mm*nn*(mm^2/width^2+nn^2/length^2)^2);
                end
             end
             
