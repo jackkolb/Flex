@@ -1,0 +1,12 @@
+width = 2;
+length = 3;
+height = .5;
+load = 10;
+x0 = 1;
+y0 = 1.5;
+poiss = .6;
+modu = .8;
+
+deform = rect_plate_point_deform(width, length, height, load, x0, y0, poiss, modu);
+
+3dplot(linspace(0, width, 10), linespace(0, wlength, deform);

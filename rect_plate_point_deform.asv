@@ -1,24 +1,24 @@
-function [ deformation ] = rect_plate_point_deform( width, length, wres, lres, height, load, x0, y0, poiss, modu )
+function [ deformation ] = rect_plate_point_deform( width, length, height, load, x0, y0, poiss, modu )
 % calculates the deformation of a rectangular plate (load at point x, y)
 %   returns a matrix of the deformations across the plate surface
 
-    x = linspace(1, width, wres);
-    y = linspace(1, length, lres);
+    x = linspace(1, width, 100);
+    y = linspace(1, length, 100);
     
-    deformation = zeros(lres, wres);
+    deformation = zeros(100, 100);
     
 
     D = (modu*height^3) / (12 * (1-poiss^2));
     base_deform = (4*load)/(pi^4*width*length*D);
     
-    m = 1:10;
-    n = 1:10;
+    m = 1:99;
+    n = 1:99;
     
     x_count = 0;
     y_count = 0;
     for xx = x
         x_count = x_count + 1;
-        for yy = y
+        for yy = x
             y_count = y_count + 1;
             
             sum_deform = 0;
