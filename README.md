@@ -5,7 +5,7 @@ A "simple" plate deformation project.
 Files:
 
 Returns a vector of z-deformation (Radius, Z) and a matrix of polar-deformation (Radius, Theta, Z)
-[In Progress - Jack] circ_plate_point_deform.m -- calculates the deformation of a circular plate given pressure on centerpoint
+[DONE - Jack] circ_plate_point_deform.m -- calculates the deformation of a circular plate given pressure on centerpoint
 circ_plate_surface_deform.m -- calculates the deformation of a curcular plate given pressure over surface
 
 Returns a 2D matrix of z-deformation (X, Y, Z)
