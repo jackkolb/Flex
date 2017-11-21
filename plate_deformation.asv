@@ -1,0 +1,30 @@
+function [ ] = plate_deformation( shape, load_type, plot, x, y, xres, yres, height, load, poiss, modulus )
+% Controller function for the plate deformations
+
+switch shape
+    
+    case 'rect'
+        if load_type == 'point'
+            def_mat = rect_plate_point_deform(x, y, xres, yres, height, load, x/2, y/2, poiss, modulus);
+        elseif load_type == 'surface'
+            def_mat = rect_plate_surface_deform(x, y, xres, yres, height, load, poiss, modulus);
+        end
+        
+    case 'circ'
+        if load_type == 'point'
+            [def_vec, def_mat] = circ_plate_point_deform(x, y, xres, yres, height, load, poiss, modulus);
+        elseif load_type == 'surface'
+            [def_vec, def_mat] = circ_plate_surface_deform(x, xres, yres, height, load, poiss, modulus);
+        end
+             [TH,R] = meshgrid(linspace(0,2*pi,tres), linspace(0,radius,rres));
+            [x,y,z] = pol2cart(TH,R,deform_matrix);
+end
+
+if type == '2d'
+    plot(def_vec);
+elseif type == '3d'
+    plot(def_mat);
+end
+
+end
+

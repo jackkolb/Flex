@@ -13,7 +13,7 @@ function [ deformation_vector, polar_deformation_matrix ] = circ_plate_point_def
     r_count = 0;
     for rr = r
         r_count = r_count + 1;
-        deformation_vector(r_count) = base_deform * ( (3+poiss)/(1+poiss)*(radius^2) - rr^2);   
+        deformation_vector(r_count) = base_deform * ( (3+poiss)/(1+poiss)*(radius^2 - rr^2) + 2 * rr ^ 2 * log(rr/radius));   
     end
     
     % set polar_deformation_matrix
