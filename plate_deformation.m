@@ -12,7 +12,7 @@ switch(shape)
         Z = def_mat;
         [X, Y] = meshgrid(linspace(0, x, xres), linspace(0, y, yres));
 
-        if strcmp(plot_type, '2d')
+        if strcmp(plot_type, 'contour')
             contour(Z);
         elseif strcmp(plot_type, '3d')
             surf(X, Y, Z);
@@ -29,10 +29,15 @@ switch(shape)
         
         if strcmp(plot_type, '2d')
             plot(linspace(0, x, xres), def_vec);
+        elseif strcmp(plot_type, 'contour')
+            contour(Z);
         elseif strcmp(plot_type, '3d')
             surf(X, Y, Z);
         end
 end
+
+max_val = max(Z(:));
+title({'Max Deflection: ', max_val});
 
 
 end
