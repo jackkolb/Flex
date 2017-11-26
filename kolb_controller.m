@@ -8,4 +8,4 @@ load = 30000;
 poiss = .3;
 modu = 30000000;
 
-plate_deformation('circ', 'surface', '3d', width, length, wres, lres, height, load, poiss, modu);
+plate_deformation('circ', ['surface',load], '3d', width, length, wres, lres, height, poiss, modu);
