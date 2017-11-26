@@ -51,7 +51,9 @@ for rr=1:size(loads)
 switch(shape)
     case 'rect'
         if strcmp(load_type, 'p')
-            def_mat = rect_plate_point_deform(x, y, xres, yres, height, load, x/2, y/2, poisson, modulus);
+            x = loads(3);
+            y = loads(4);
+            def_mat = rect_plate_point_deform(x, y, xres, yres, height, load, x, y, poisson, modulus);
         elseif strcmp(load_type, 's')
             def_mat = rect_plate_surface_deform(x, y, xres, yres, height, load, poisson, modulus);
         end
