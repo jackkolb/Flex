@@ -50,9 +50,9 @@ for rr=1:size(loads)
 % matrix
 switch(shape)
     case 'rect'
-        if strcmp(load_type, 'point')
+        if strcmp(load_type, 'p')
             def_mat = rect_plate_point_deform(x, y, xres, yres, height, load, x/2, y/2, poisson, modulus);
-        elseif strcmp(load_type, 'surface')
+        elseif strcmp(load_type, 's')
             def_mat = rect_plate_surface_deform(x, y, xres, yres, height, load, poisson, modulus);
         end
         Z = def_mat;
@@ -60,9 +60,9 @@ switch(shape)
         total_deflection_matrix = total_deflection_matrix + Z;
 
     case 'circ'
-        if strcmp(load_type, 'point')
+        if strcmp(load_type, 'p')
             [def_vec, def_mat] = circ_plate_point_deform(x, xres, yres, height, load, poisson, modulus);
-        elseif strcmp(load_type, 'surface')
+        elseif strcmp(load_type, 's')
             [def_vec, def_mat] = circ_plate_surface_deform(x, xres, yres, height, load, poisson, modulus);
         end
         [TH,R] = meshgrid(linspace(0,2*pi,yres), linspace(0,x,xres));
