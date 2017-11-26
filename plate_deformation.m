@@ -8,6 +8,7 @@ function [ ] = plate_deformation( shape, loads, plot_type, x, y, xres, yres, hei
 % shape, load_type, or plot_type are invalid
 shapes = ['circ', 'rect'];
 plot_types = ['2d', 'contour', '3d'];
+load_types = ['p', 's'];
 
 if ~ismember(shapes, shape)
     error('plate_deformation:invalid_parameter', 'inputted shape is invalid (need circ or rect)');
@@ -31,7 +32,6 @@ end
 
 % set initial matrix to zeros
 total_deflection_matrix = zeros(xres, yres);
-load_types = ['point', 'surface'];
 
 % for each load, add to the deflection matrix
 for rr=1:size(loads)
