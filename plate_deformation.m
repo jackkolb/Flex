@@ -34,10 +34,11 @@ end
 total_deflection_matrix = zeros(xres, yres);
 
 % for each load, add to the deflection matrix
-for rr=1:size(loads)
+sz = size(loads);
+for rr=1:sz(1)
     % get load data from load matrix row
-    load_type = loads(rr, 1);
-    load = loads(rr, 2);
+    load_type = loads{rr, 1};
+    load = loads{rr, 2};
     
     % check that load is valid
     if load < 0
@@ -50,11 +51,11 @@ for rr=1:size(loads)
 % matrix
 switch(shape)
     case 'rect'
-        if strcmp(load_type, 'p')
-            x = loads(3);
-            y = loads(4);
-            def_mat = rect_plate_point_deform(x, y, xres, yres, height, load, x, y, poisson, modulus);
-        elseif strcmp(load_type, 's')
+        if strcmp(load_type, 'point')
+            x0 = loads{rr, 3};
+            y0 = loads{rr, 4};
+            def_mat = rect_plate_point_deform(x, y, xres, yres, height, load, x0, y0, poisson, modulus);
+        elseif strcmp(load_type, 'surface')
             def_mat = rect_plate_surface_deform(x, y, xres, yres, height, load, poisson, modulus);
         end
         Z = def_mat;
@@ -62,9 +63,9 @@ switch(shape)
         total_deflection_matrix = total_deflection_matrix + Z;
 
     case 'circ'
-        if strcmp(load_type, 'p')
+        if strcmp(load_type, 'point')
             [def_vec, def_mat] = circ_plate_point_deform(x, xres, yres, height, load, poisson, modulus);
-        elseif strcmp(load_type, 's')
+        elseif strcmp(load_type, 'surface')
             [def_vec, def_mat] = circ_plate_surface_deform(x, xres, yres, height, load, poisson, modulus);
         end
         [TH,R] = meshgrid(linspace(0,2*pi,yres), linspace(0,x,xres));
