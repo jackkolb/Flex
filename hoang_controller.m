@@ -29,28 +29,28 @@ plate_deformation('rect', {'surface', 40, 0, 0; 'point', 120, 2, 10}, 'contour',
 
 % Test Case 8
 subplot(3,5,8)
-plate_deformation('circ', {'point', 2500}, '2d', 24, 24, 100, 100, 0.25, 0.3, 30.0*10^6);
+plate_deformation('circ', {'point', 2500}, '2d', 12, 12, 100, 100, 0.25, 0.3, 30.0*10^6);
 
 % Test Case 9
 subplot(3,5,9)
-plate_deformation('circ', {'point', 2500}, '2d', 24, 24, 100, 100, 0.25, 0.3, 30.0*10^6);
+plate_deformation('circ', {'point', 2500}, '2d', 12, 12, 100, 100, 0.25, 0.3, 30.0*10^6);
 
 % Test Case 10
 subplot(3,5,10)
-plate_deformation('circ', {'point', 2000}, '2d', 0.1, 0.1, 100, 100, 0.002, 0.334, 70.0*10^9);
+plate_deformation('circ', {'point', 2000}, '2d', 0.05, 0.05, 100, 100, 0.002, 0.334, 70.0*10^9);
 
 % Test Case 11
 subplot(3,5,11)
-plate_deformation('circ', {'surface', 150}, '3d', 8, 8, 100, 100, 0.25, 0.3, 30.0*10^6);
+plate_deformation('circ', {'surface', 150}, '3d', 4, 4, 100, 100, 0.25, 0.3, 30.0*10^6);
 
 % Test Case 12
 subplot(3,5,12)
-plate_deformation('circ', {'surface', 150}, 'contour', 20, 20, 100, 100, 0.25, 0.3, 30.0*10^6);
+plate_deformation('circ', {'surface', 150}, 'contour', 10, 10, 100, 100, 0.25, 0.3, 30.0*10^6);
 
 % Test Case 13
 subplot(3,5,13)
-plate_deformation('circ', {'surface', 80; 'point', 120}, 'contour', 10, 10, 100, 100, 0.125, 0.3, 10.0*10^6);
+plate_deformation('circ', {'surface', 80; 'point', 120}, 'contour', 5, 5, 100, 100, 0.125, 0.3, 10.0*10^6);
 
 % Test Case 14
 subplot(3,5,14)
-plate_deformation('circ', {'surface', 40; 'point', 120}, 'contour', 10, 10, 100, 100, 0.125, 0.3, 10.0*10^6);
+plate_deformation('circ', {'surface', 40; 'point', 120}, 'contour', 5, 5, 100, 100, 0.125, 0.3, 10.0*10^6);
