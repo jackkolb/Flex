@@ -10,8 +10,8 @@ function [ deformation ] = rect_plate_surface_deform( width, length, wres, lres,
     D = (modu*height^3) / (12 * (1-poiss^2));
     base_deform = (16*load)/(pi^6*D);
     
-    m = 1:10;
-    n = 1:10;
+    m = 1:2:11;
+    n = 1:2:11;
     
     x_count = 0;
     for xx = x
