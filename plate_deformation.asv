@@ -1,10 +1,9 @@
-function [ ] = plate_deformation( shape, loads, plot_type, x, y, xres, yres, height, poisson, modulus )
+function [ max_val ] = plate_deformation( shape, loads, plot_type, x, y, xres, yres, height, poisson, modulus, main_axes )
 % Controller function for the plate deformations
 % Input loads as a n by 2 matrix, of type and load
 % ex: ['point', 50; 'point', 100; 'surface', 82]
 
-% catch errors
-
+% ::catch errors::
 % shape, load_type, or plot_type are invalid
 shapes = ['circ', 'rect'];
 plot_types = ['2d', 'contour', '3d'];
@@ -74,37 +73,40 @@ switch(shape)
 end
 end
 
-% plot deflection matrix
+% plot the deflection matrix
 if strcmp(plot_type, '2d') && strcmp(shape, 'circ')
-    plot(linspace(0, x, xres), def_vec);
+    plot(linspace(0, x, xres), def_vec, 'parent', main_axes);
 elseif strcmp(plot_type, 'contour') || strcmp(plot_type, '2d')
-    contour(Z);
+    contour(Z, 'parent', main_axes);
 elseif strcmp(plot_type, '3d')
-    surf(X, Y, Z);
+    surf(X, Y, Z, 'parent', main_axes);
 end
 
-% display max deflection
+% set the max deflection (which will be returned)
 max_val = max(Z(:));
-title({'Max Deflection: ', max_val});
-
-
 end
 
 function [ deformation ] = rect_plate_point_deform( width, length, wres, lres, height, load, x0, y0, poiss, modu )
 % calculates the deformation of a rectangular plate (load at point x, y)
 %   returns a matrix of the deformations across the plate surface
 
+    % set x and y vectors
     x = linspace(0, width, wres);
     y = linspace(0, length, lres);
   
+    % set deformation matrix to zeroes
     deformation = zeros([lres wres]);
     
+    % calculate base values (D, base_deform)
     D = (modu*height^3) / (12 * (1-poiss^2));
     base_deform = (4*load)/(pi^4*width*length*D);
     
     m = 1:10;
     n = 1:10;
     
+    % iterate through x and y, calculating the deflection at that point,
+    % placing the deformation into its corresponding slot in the
+    % deformation matrix
     x_count = 0;
     for xx = x
         x_count = x_count + 1;
@@ -123,17 +125,16 @@ function [ deformation ] = rect_plate_point_deform( width, length, wres, lres, h
         end    
     end
     
-%    deformation = (4*load)/(pi^2*width*length*D) * sum( sum( sin(m*pi*x0/width)*sin(n*pi*y0/length) / (m^2/width^2+n^2/length^2) * sin(m*pi*x/width)*sin(n*pi*y/length), n), m); % some random text
-
 end
 
 function [ deformation ] = rect_plate_surface_deform( width, length, wres, lres, height, load, poiss, modu )
 % calculates the deformation of a rectangular plate (load over surface)
-%   Detailed explanation goes here
 
+    % set x and y vectors
     x = linspace(0, width, wres);
     y = linspace(0, length, lres);
   
+    % set deformation matrix to zeros
     deformation = zeros([lres wres]);
     
     D = (modu*height^3) / (12 * (1-poiss^2));
@@ -206,13 +207,12 @@ function [ deform, polar_deformation_matrix ] = circ_plate_surface_deform(radius
         r_count = r_count +1;
         deform(r_count) = load*(radius^2-rr^2)/(64*D)*((5+modulus)/(1+modulus)*(radius^2) - rr^2);
     end
-    
+ 
     % set polar_deformation_matrix
     polar_deformation_matrix = zeros([rres, tres]);
     for rr = 1:rres
         for th = 1:tres
             polar_deformation_matrix(rr, th) = deform(rr);
         end
-    end
-    
+    end  
 end
