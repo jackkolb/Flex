@@ -90,6 +90,8 @@ elseif strcmp(plot_type, '3d')
     surf(X, Y, Z, 'parent', main_axes);
 end
 
+colorbar();
+
 % set the max deflection (which will be returned)
 max_val = max(Z(:));
 end
