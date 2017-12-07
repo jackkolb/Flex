@@ -1,15 +1,14 @@
 # Flex
 
-A "simple" plate deformation project.
+A "simple" plate deformation project: given a rectangular or circular plate of specified dimensions,
+ plot and measure the deformation across the plate. This program is run by a GUI.
 
 Files:
 
-Returns a vector of z-deformation (Radius, Z) and a matrix of polar-deformation (Radius, Theta, Z)
-[DONE - Jack] circ_plate_point_deform.m -- calculates the deformation of a circular plate given pressure on centerpoint
-circ_plate_surface_deform.m -- calculates the deformation of a curcular plate given pressure over surface
+DesignProject_GUI.fig -- GUI Interface (figure) to the program
+DesignProject_GUI.m -- GUI Interface (script) to the program
 
-Returns a 2D matrix of z-deformation (X, Y, Z)
-[DONE - Jack] rect_plate_point_deform.m -- calculates the deformation of a rectangular plate given pressure on centerpoint
-[DONE - Jack] rect_plate_surface_deform.m -- calculates the deformation of a rectangular plate given pressure over surface
+plate_deformation.m -- primary function that calculates and plots the deformation, returns the maximum value
 
-sum_deform.m -- sums deformations
+Report.pdf -- a .pdf report, describing the project, displaying test cases, and also holding the code
+Report.odt -- the file on which Report.pdf was exported from

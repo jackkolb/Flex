@@ -1,7 +1,7 @@
 function [ max_val ] = plate_deformation( shape, loads, plot_type, x, y, xres, yres, height, poisson, modulus, main_axes )
 % Controller function for the plate deformations
-% Input loads as a n by 2 matrix, of type and load
-% ex: ['point', 50; 'point', 100; 'surface', 82]
+% Input loads as a n by 4 cell array, of type, load, x0, y0 (use 0 for x/y surface loads):
+% ex: {'point', 50, 10, 10; 'point', 100, 30, 30; 'surface', 82, 0, 0}
 
 % ::catch errors::
 % shape, load_type, or plot_type are invalid
